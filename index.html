@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html>
-<body>
-
-<div id="demo">
-<h1>The XMLHttpRequest Object</h1>
-<button type="button" onclick="loadDoc()">Change Content</button>
-</div>
-
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loading Data from External File using Ajax in jQuery</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "ajax_info.html", true);
-  xhttp.send();
-}
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#box").load("ajax_info.html");
+    });
+});
 </script>
-
+</head>
+<body>
+    <div id="box">
+        <h2>Click button to load new content inside DIV box</h2>
+    </div>
+    <button type="button">Load ContentZX</button>
 </body>
 </html>

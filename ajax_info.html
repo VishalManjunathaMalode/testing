@@ -4,7 +4,7 @@
 
 <div id="demo">
 <h1>The XMLHttpRequest Object</h1>
-<button type="button" onclick="loadDoc()">Change Content</button>
+<button type="button" onclick="loadDoc()">Retry</button>
 </div>
 
 <script>
@@ -16,7 +16,7 @@ function loadDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "ajax_info.html", true);
+  xhttp.open("GET", "index.html", true);
   xhttp.send();
 }
 </script>

@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<title>Loading Data from External File using Ajax in jQuery</title>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#box").load("ajax_info.html");
-    });
-});
-</script>
+    <title>Example Form</title>
 </head>
 <body>
-    <div id="box">
-        <h2>Click button to load new content inside DIV box</h2>
-    </div>
-    <button type="button">Load ContentZX</button>
+    <form id="myForm" action="/process_data" method="post">
+        <input type="text" name="input_data" placeholder="Enter some data">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseDiv"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:5000/',
+                    data: formData,
+                    success: function(response) {
+                        // Append the response to a div element with id "responseDiv"
+                        $('#responseDiv').html(response);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
